@@ -9,7 +9,8 @@
 body {
   height: 100vh;
   overflow: hidden;
-  background: radial-gradient(circle at top, #4c7bd9, #1f2933);
+  background-image: url(./contenu/linux.jpg);
+  background-size: cover;
   color: #f0f0f0;
 }
 
