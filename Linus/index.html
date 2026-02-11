@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Bureau Linux Web</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Barre du haut type Linux -->
+  <div class="top-bar">
+    <div class="top-left">
+      <span class="logo">🐧</span>
+      <span class="top-title">Bureau Linux Web</span>
+    </div>
+    <div class="top-right">
+      <span id="clock"></span>
+    </div>
+  </div>
+
+  <!-- Bureau -->
+  <div id="desktop">
+    <!-- Icône Dossier Personnel -->
+    <!--<div class="icon" data-target="home">
+      <div class="icon-img folder"></div>
+      <div class="icon-label">Dossier personnel</div>
+    </div>-->
+
+    <!-- Icône Documents -->
+    <div class="icon" data-target="document1">
+      <div class="icon-img folder"></div>
+      <div class="icon-label">Linus est né</div>
+    </div>
+
+    <div class="icon" data-target="document2">
+      <div class="icon-img folder"></div>
+      <div class="icon-label">Linux est né</div>
+    </div>
+
+    <div class="icon" data-target="documents">
+      <div class="icon-img folder"></div>
+      <div class="icon-label">Résponsabilités</div>
+    </div>
+
+    <div class="icon" data-target="documents">
+      <div class="icon-img folder"></div>
+      <div class="icon-label">Git est né</div>
+    </div>
+
+    <div class="icon" data-target="documents">
+      <div class="icon-img folder"></div>
+      <div class="icon-label">Reconnaissance</div>
+    </div>
+
+    <div class="icon" data-target="documents">
+      <div class="icon-img folder"></div>
+      <div class="icon-label">Héritage</div>
+    </div>
+
+    <!-- Icône Images -->
+    <!--<div class="icon" data-target="pictures">
+      <div class="icon-img folder"></div>
+      <div class="icon-label">Images</div>
+    </div>-->
+
+    <!-- Icône Vidéos -->
+    <div class="icon" data-target="videos">
+      <div class="icon-img folder"></div>
+      <div class="icon-label">Vidéos</div>
+    </div>
+
+    <!-- Icône Terminal (exemple simple) -->
+    <div class="icon" data-target="terminal">
+      <div class="icon-img terminal"></div>
+      <div class="icon-label">Terminal</div>
+    </div>
+  </div>
+
+  <!-- Barre des tâches en bas -->
+  <div class="bottom-bar">
+    <div class="bottom-left">
+      <span class="menu-button">☰ Menu</span>
+    </div>
+    <div id="taskbar" class="taskbar"></div>
+    <div class="bottom-right">
+      <span class="sys-icon">🔊</span>
+      <span class="sys-icon">📶</span>
+    </div>
+  </div>
+
+  <!-- Fenêtres (explorateur de fichiers, etc.) -->
+  <div id="windows-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

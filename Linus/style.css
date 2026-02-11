@@ -1,0 +1,379 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-family: "Ubuntu", Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #4c7bd9, #1f2933);
+  color: #f0f0f0;
+}
+
+/* Barre supérieure */
+.top-bar {
+  height: 32px;
+  background: linear-gradient(to bottom, #2d3748, #1a202c);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.top-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  font-size: 16px;
+}
+
+.top-right {
+  font-family: monospace;
+}
+
+/* Bureau */
+#desktop {
+  position: absolute;
+  top: 32px;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  padding: 16px;
+}
+
+/* Icônes du bureau */
+.icon {
+  width: 80px;
+  text-align: center;
+  margin: 10px;
+  cursor: default;
+  color: #f9fafb;
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.icon-img {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 4px auto;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+
+/* Style “dossier” */
+.icon-img.folder {
+  background: linear-gradient(135deg, #fecf5b, #f6a722);
+  position: relative;
+}
+.icon-img.folder::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  width: 24px;
+  height: 10px;
+  background: #fdd274;
+  border-radius: 4px 4px 0 0;
+}
+
+/* Style “terminal” */
+.icon-img.terminal {
+  background: #111827;
+  border-radius: 6px;
+  position: relative;
+}
+.icon-img.terminal::before {
+  content: "$ _";
+  position: absolute;
+  color: #22c55e;
+  font-size: 11px;
+  top: 16px;
+  left: 10px;
+  font-family: monospace;
+}
+
+/* Label icône */
+.icon-label {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+}
+
+/* Barre du bas */
+.bottom-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 32px;
+  background: linear-gradient(to top, #111827, #1f2937);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  font-size: 13px;
+}
+
+.bottom-left, .bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-button {
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #4b5563;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background: #6b7280;
+}
+
+.sys-icon {
+  opacity: 0.85;
+}
+
+/* Taskbar */
+.taskbar {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+  padding: 0 8px;
+}
+
+.task-item {
+  min-width: 80px;
+  padding: 2px 8px;
+  background: #374151;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-item.active {
+  background: #4b5563;
+}
+
+/* Fenêtres */
+.window {
+  position: absolute;
+  top: 70px;
+  left: 80px;
+  width: 480px;
+  min-width: 280px;
+  min-height: 220px;
+  background: #111827;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #4b5563;
+}
+
+.window-header {
+  height: 28px;
+  background: linear-gradient(to right, #111827, #1f2937);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  border-radius: 6px 6px 0 0;
+  cursor: move;
+}
+
+.window-title {
+  font-size: 13px;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.win-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+}
+
+.win-close {
+  background: #ef4444;
+}
+
+.win-max {
+  background: #22c55e;
+}
+
+.win-min {
+  background: #facc15;
+}
+
+.window-body {
+  flex: 1;
+  background: #111827;
+  padding: 8px;
+  overflow: auto;
+  border-radius: 0 0 6px 6px;
+}
+
+/* “Explorateur de fichiers” simple */
+.file-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.file-item {
+  width: 80px;
+  text-align: center;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.file-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 4px auto;
+  border-radius: 6px;
+}
+
+.file-icon.folder {
+  background: linear-gradient(135deg, #fecf5b, #f6a722);
+  position: relative;
+}
+.file-icon.folder::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  width: 20px;
+  height: 8px;
+  background: #fdd274;
+  border-radius: 4px 4px 0 0;
+}
+
+.file-icon.file {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  position: relative;
+}
+.file-icon.file::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.85);
+}
+
+/* “Fichier ouvert” (contenu texte) */
+.file-viewer {
+  background: #020617;
+  border-radius: 4px;
+  border: 1px solid #374151;
+  padding: 6px;
+  font-size: 12px;
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+
+/* Terminal */
+.terminal-body {
+  background: #020617;
+  border-radius: 4px;
+  border: 1px solid #374151;
+  padding: 6px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #e5e7eb;
+}
+
+.terminal-line {
+  display: flex;
+}
+
+.terminal-prompt {
+  color: #22c55e;
+  margin-right: 4px;
+}
+
+.terminal-input {
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  flex: 1;
+}
+
+/* Draggable (limite) */
+.window.dragging {
+  opacity: 0.9;
+}
+
+
+/* Notification de suggestion de document */
+.doc-suggestion {
+  position: fixed;
+  top: 40px;
+  right: 20px;
+  width: 260px;
+  background: rgba(17, 24, 39, 0.92);
+  border: 1px solid #4b5563;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  color: #e5e7eb;
+  font-size: 12px;
+  padding: 8px;
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.doc-suggestion-thumbnail {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  background: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.doc-suggestion-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.doc-suggestion-title {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.doc-suggestion-meta {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.doc-suggestion-close {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 11px;
+  color: #9ca3af;
+}
