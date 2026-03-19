@@ -6,11 +6,25 @@
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+:root {
+  --win-red: #ff5f56;
+  --win-yellow: #ffbd2e;
+  --win-green: #27c93f;
+  --win-red-bg: rgba(255, 95, 86, 0.15);
+  --win-yellow-bg: rgba(255, 189, 46, 0.15);
+  --win-green-bg: rgba(39, 201, 63, 0.15);
+}
+
+.window.theme-red { --accent: var(--win-red); --accent-bg: var(--win-red-bg); }
+.window.theme-yellow { --accent: var(--win-yellow); --accent-bg: var(--win-yellow-bg); }
+.window.theme-green { --accent: var(--win-green); --accent-bg: var(--win-green-bg); }
+.window { --accent: var(--win-green); --accent-bg: var(--win-green-bg); }
+
 body {
   height: 100vh;
   overflow: hidden;
   background-color: #1e3c72;
-  background-image: url('./contenu/linux.jpg');
+  background-image: url('./contenu/linux.webp');
   background-size: cover;
   background-position: center;
   color: #f0f0f0;
@@ -107,12 +121,12 @@ body {
   background-position: center;
 }
 
-.icon-user { background: linear-gradient(135deg, #FF9A9E, #FECFEF); }
-.icon-os { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
-.icon-work { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
-.icon-git { background: linear-gradient(135deg, #fccb90, #d57eeb); }
-.icon-award { background: linear-gradient(135deg, #e0c3fc, #8ec5fc); }
-.icon-legacy { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.icon-user { background: linear-gradient(135deg, var(--win-red), #ff8a84); }
+.icon-os { background: linear-gradient(135deg, var(--win-yellow), #ffd97d); }
+.icon-work { background: linear-gradient(135deg, var(--win-green), #7df38c); }
+.icon-git { background: linear-gradient(135deg, var(--win-red), #ff9691); }
+.icon-award { background: linear-gradient(135deg, var(--win-yellow), #ffe0a3); }
+.icon-legacy { background: linear-gradient(135deg, var(--win-green), #9cf9a3); }
 .icon-term { background: #111827; position: relative; border: 1px solid rgba(255,255,255,0.1); }
 .icon-term::before {
   content: "$ _";
@@ -304,39 +318,15 @@ body {
 }
 
 .custom-quote {
-  border-left: 4px solid #22c55e;
+  border-left: 4px solid var(--accent);
   padding: 16px;
   margin: 24px 0;
   font-style: italic;
-  color: #a7f3d0;
-  background: rgba(34,197,94,0.1);
+  color: #e2e8f0;
+  background: var(--accent-bg);
   border-radius: 4px;
   font-size: 1.05em;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.quote-blue {
-  border-left-color: #3b82f6;
-  color: #bfdbfe;
-  background: rgba(59,130,246,0.1);
-}
-
-.quote-orange {
-  border-left-color: #f97316;
-  color: #fdba74;
-  background: rgba(249,115,22,0.1);
-}
-
-.quote-purple {
-  border-left-color: #a855f7;
-  color: #d8b4fe;
-  background: rgba(168,85,247,0.1);
-}
-
-.quote-teal {
-  border-left-color: #14b8a6;
-  color: #5eead4;
-  background: rgba(20,184,166,0.1);
 }
 
 .intro-text {
@@ -403,9 +393,8 @@ body {
 }
 .img-header-wide {
   width: 100%;
-  height: 300px;
-  object-fit: cover;
-  object-position: center 60%;
+  height: auto;
+  object-fit: initial;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
@@ -431,14 +420,8 @@ body {
   margin-bottom: 24px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
-.highlight-purple {
-  border-left: 4px solid #a855f7;
-}
-.highlight-teal {
-  border-left: 4px solid #14b8a6;
-}
-.highlight-blue {
-  border-left: 4px solid #3b82f6;
+.themed-highlight {
+  border-left: 4px solid var(--accent);
 }
 .quotes-grid {
   display: flex;

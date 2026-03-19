@@ -20,13 +20,20 @@ updateClock();
 document.querySelectorAll(".icon").forEach(icon => {
   icon.addEventListener("click", () => {
     const target = icon.getAttribute("data-target");
-    openApp(target);
+    const iconImg = icon.querySelector(".icon-img");
+    const iconClass = iconImg ? iconImg.className : "";
+    openApp(target, iconClass);
   });
 });
 
-function openApp(target) {
+function openApp(target, iconClass = "") {
+  let theme = "theme-green";
+  if (iconClass.includes("icon-user") || iconClass.includes("icon-git")) theme = "theme-red";
+  if (iconClass.includes("icon-os") || iconClass.includes("icon-award")) theme = "theme-yellow";
+
   if (target === "terminal") {
-    createTerminalWindow();
+    const { win } = createTerminalWindow();
+    win.classList.add("theme-green");
     return;
   }
 
@@ -34,7 +41,8 @@ function openApp(target) {
   if (contentEl) {
     const title = contentEl.getAttribute("data-title") || "Document";
     const htmlContent = contentEl.innerHTML;
-    createModalWindow(title, htmlContent);
+    const { win } = createModalWindow(title, htmlContent);
+    win.classList.add(theme);
   } else {
     console.warn("Contenu introuvable pour la cible: " + target);
   }
@@ -43,6 +51,7 @@ function openApp(target) {
 function createModalWindow(title, htmlContent) {
   const { win, body } = createWindow(title);
   body.innerHTML = htmlContent;
+  return { win, body };
 }
 
 function createWindow(title) {
@@ -101,7 +110,22 @@ function createWindow(title) {
     setActiveTaskbarItem(win.dataset.id);
   });
 
+  maximizeWindow(win);
+
   return { win, body, titleEl };
+}
+
+function maximizeWindow(win) {
+  win.dataset.prevLeft = win.style.left;
+  win.dataset.prevTop = win.style.top;
+  win.dataset.prevWidth = win.style.width;
+  win.dataset.prevHeight = win.style.height;
+
+  win.style.left = "0px";
+  win.style.top = "36px";
+  win.style.width = "100%";
+  win.style.height = (window.innerHeight - 36 - 54) + "px";
+  win.dataset.maximized = "true";
 }
 
 function createTerminalWindow() {
@@ -146,7 +170,7 @@ function createTerminalWindow() {
       typeTarget.textContent += themeText.charAt(charIndex);
       charIndex++;
       body.scrollTop = body.scrollHeight;
-      setTimeout(typeWriter, 50 );
+      setTimeout(typeWriter, 10 );
     } else {
       const guide = document.createElement("div");
       guide.style.color = "#9ca3af";
@@ -282,16 +306,7 @@ function setupWindowControls(win, btnClose, btnMin, btnMax) {
   btnMax.addEventListener("click", () => {
     const isMax = win.dataset.maximized === "true";
     if (!isMax) {
-      win.dataset.prevLeft = win.style.left;
-      win.dataset.prevTop = win.style.top;
-      win.dataset.prevWidth = win.style.width;
-      win.dataset.prevHeight = win.style.height;
-
-      win.style.left = "0px";
-      win.style.top = "36px";
-      win.style.width = "100%";
-      win.style.height = (window.innerHeight - 36 - 54) + "px";
-      win.dataset.maximized = "true";
+      maximizeWindow(win);
     } else {
       win.style.left = win.dataset.prevLeft || "100px";
       win.style.top = win.dataset.prevTop || "80px";
